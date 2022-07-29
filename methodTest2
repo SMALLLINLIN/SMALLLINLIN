@@ -1,0 +1,28 @@
+public class methodTest2 {  //方法的重载:
+    /**
+    1方法名相同
+    2参数列表不同(参数个数，参数类型)
+    3返回值不做要求
+    4必须在同一个类中
+*/
+    public static int add(int a,int b){
+        return a+b;
+    }
+    public static int add(int a,int b ,int c){
+        return a+b+c;
+    }
+    public static double add(double a ,double b){
+        return a+b;
+    }
+    public static void main(String[] args) {
+        int a=10;
+        int b=20;
+        double c=15.5;
+        double d=17.7;
+        int e= 30;
+        System.out.println(add(a, b));
+        System.out.println(add(c, d));
+        System.out.println(add(a, b, e));
+
+    }
+}
