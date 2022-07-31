@@ -1,0 +1,31 @@
+public class methodTest4 {
+    public static void move(char pos1,char pos2){// 汉诺塔
+        System.out.println(pos1+"-->"+pos2);
+    }// 汉诺塔
+    public static void hanio(int n,char pos1,char pos2,char pos3){
+        if(n==1){
+            move(pos1,pos3);
+        }
+        else{
+            hanio(n-1,pos1,pos3,pos2);
+            move(pos1, pos3);
+            hanio(n-1,pos2,pos1,pos3);
+        }
+    }// 汉诺塔
+    public static int jumpFloor(int target){
+          if(target==1){
+              return 1;
+          }
+          if(target==2){
+              return 2;
+          }
+          else {
+              return jumpFloor(target-1)+jumpFloor(target-2);
+          }
+    }//青蛙跳台阶问题
+    public static void main(String[] args) {
+        //hanio(4,'A','B','C');
+        System.out.println(jumpFloor(5));
+
+    }
+}
