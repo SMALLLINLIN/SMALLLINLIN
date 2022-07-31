@@ -1,0 +1,51 @@
+public class methodTest3 {//方法的递归
+   public static int fac(int n){//求阶乘
+        if(n==1)
+        {return 1;}
+        return n*fac(n-1);
+    }
+    public static void fun(int n){//按顺序输出一个数的每一位
+        if(n>9){
+            fun(n/10);
+        }
+        System.out.println(n%10);
+    }
+    public static int sum(int n){//累加
+        if(n==1){
+            return 1;
+        }
+        return n+=sum(n-1);
+    }
+    public static int add(int a){//求一个数的每一位加起来
+        if(a<10){
+            return a;
+        }
+        return a % 10 + add (a / 10);
+    }
+    public static int fabonaci(int n){//求斐波那契数列第N项
+       if(n==1||n==2){
+           return 1;}
+       return fabonaci(n-1)+fabonaci(n-2);
+    }
+    public static void fabonaci2(int n){//非递归求斐波那契数列第N项
+       int f1=1;
+       int f2=1;
+       int f3=0;
+       for (int i=3;i<=n;i++){
+           f3=f1+f2;
+           f1=f2;
+           f2=f3;
+       }
+        System.out.println(f3);
+
+       }
+    public static void main(String[] args) {
+
+        //System.out.println(fac(5));
+      //  fun(6);
+        //System.out.println(sum(7));
+       // System.out.println(add(123));
+        //System.out.println(fabonaci(4));
+        fabonaci2(8);
+    }
+}
