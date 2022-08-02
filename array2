@@ -1,0 +1,182 @@
+import java.util.Arrays;
+/**
+ * Arrays工具类常用函数
+ * toString()变成字符串     binarySearch()二分查找       copyOf()拷贝数组
+ * */
+public class arr2 {
+    public static int[] Arrcopy(int[] arr) {
+        int[] arr2 = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            arr2[i] = arr[i];
+        }
+        return arr2;
+    }
+
+    public static int max(int[] arr) {
+        int ret = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (ret < arr[i]) {
+                ret = arr[i];
+            }
+        }
+        return ret;
+    }
+
+    public static int find(int[] arr, int key) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == key) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static int binarrySerrch(int[] arr, int key) {
+        Arrays.sort(arr);
+        int right = arr.length - 1;
+        int left = 0;
+        int m = (right + left) >>> 1;
+        while (left <= right) {
+            if (key < arr[m]) {
+                right = m - 1;
+                m = (right + left) >>> 1;
+            }
+            if (key > arr[m]) {
+                left = m + 1;
+                m = (right + left) >>> 1;
+            }
+            if (key == arr[m]) {
+                return m;
+            }
+        }
+        return -1;
+    }//二分查找
+
+    public static boolean isUp(int[] arr2) {
+        for (int i = 0; i < arr2.length - 1; i++) {
+            if (arr2[i] > arr2[i + 1]) {
+                return false;
+            }
+        }
+        return true;
+    }//检测是否为升序
+
+    public static void bubbleSort(int[] arr) {
+        int tmp = 0;
+        int count = 0;
+        boolean flg = false;
+        for (int i = 0; i < arr.length; i++) {
+            flg = false;
+            for (int j = 0; j < arr.length - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    tmp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = tmp;
+                    flg = true;
+                }
+            }
+            if (flg == false) {
+                break;
+            }
+        }
+    }//冒泡排序
+
+    public static void reverse(int[] arr) {
+        int left = 0;
+        int right = arr.length - 1;
+        while (left < right) {
+            int tmp = 0;
+            tmp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = tmp;
+            left++;
+            right--;
+        }
+    }//逆序
+    public static void sout(int[][] arr){
+        /**for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println(" ");
+        }//二维数组的打印方式*/
+        for (int[] tmp:arr) {
+            for (int x:tmp
+            ) {
+                System.out.print(x);
+            }
+            System.out.println(" ");
+        }//二维数组的打印方式
+    }
+
+    public static void main6(String[] args) {//不规则二维数组
+        int[][] arr=new int[3][];
+        arr[0]=new int[] {1,2,3};
+        arr[1]=new  int[]{4,5,6,7,8};
+        arr[2]=new int[] {9,10,11,12};
+        sout(arr);
+    }
+
+    public static void main5(String[] args) {//二维数组
+        int arr[][] = {{1, 2, 3}, {4, 5, 6}};
+        sout(arr);
+
+
+    }
+
+    public static void swap(int[] arr) {
+        int left = 0;
+        int right = arr.length - 1;
+        while (left < right) {
+            while (left < right && arr[left] % 2 == 0) {
+                left++;
+            }
+            while (left < right && arr[right] % 2 != 0) {
+                right--;
+            }
+            if (left < right) {
+                int tmp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = tmp;
+            }
+        }
+    }//偶数放前面奇数放后面
+
+    public static void main4(String[] args) {
+        int[] arr = {1, 8, 6, 9, 13, 38, 23, 88, 65, 98};
+        // System.out.println(binarrySerrch(arr, 108));
+        //System.out.println(Arrays.binarySearch(arr, 108));
+        // System.out.println(isUp(arr));
+        bubbleSort(arr);
+        System.out.println(Arrays.toString(arr));
+        reverse(arr);
+        System.out.println(Arrays.toString(arr));
+        swap(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public static void main3(String[] args) {
+        int[] arr = {15, 65, 84, 56, 21, 45, 32, 78};
+        System.out.println("下标:" + find(arr, 21));
+    }
+
+    public static void main2(String[] args) {
+        int[] arr = {84, 56, 45, 32, 15, 78, 98, 51, 30};
+        System.out.println(max(arr));
+    }
+
+    public static void main1(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5, 6};
+        System.out.println(Arrays.toString(Arrcopy(arr)));
+        int[] ret = new int[arr.length];
+        int[] ret2 = new int[arr.length];
+        int[] ret3 = new int[arr.length];
+        System.out.println(Arrays.toString(ret = Arrays.copyOf(arr, arr.length)));
+        System.arraycopy(arr, 0, ret2, 0, arr.length);
+        System.out.println(Arrays.toString(ret2));
+        ret3 = arr.clone();
+        System.out.println(Arrays.toString(ret3));
+    }
+}
+
+
