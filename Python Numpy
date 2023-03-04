@@ -1,0 +1,343 @@
+
+import numpy as np
+"""
+arr=np.array([1,2,3,4,5,6])
+print(np.__version__)
+
+NP数组创建
+
+arr1 = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+print(arr1)
+arr2 = np.array([[1, 2, 3], [4, 5, 6]])
+print(arr2)
+arr3 = np.array([[[1, 2, 3], [4, 5, 6]], [[1, 2, 3], [4, 5, 6]]])
+print(arr3)
+a=arr1
+b=arr2
+c=arr3
+print(a.ndim)
+print(b.ndim)
+print(c.ndim)
+d = np.array(51)
+print(d.ndim)
+arr5 = np.array([1, 2, 3, 4], ndmin=5)
+
+print(arr5)
+print('number of dimensions :', arr5.ndim)
+数组索引"""
+"""
+arr6 = np.array([1, 2, 3, 4, 5, 6, 7])
+print('第三个数据', arr6[2])
+arr7 = np.array([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]])
+print('第一行第二个数据', arr7[0, 1])
+print('arr1第三个加arr2第二行第三个', arr6[2]+arr7[1, 2])
+裁切数组"""
+""""""
+"""
+arr8 = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+print(arr8[4:])
+[start默认0:end默认该维度内数组长度:step默认1]"""
+"""print(arr8[1: 9: 2])
+第二个到第十个间隔为2裁剪"""
+"""arr9 = np.array([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]])
+从两个元素裁切索引 1 到索引 4（不包括），这将返回一个 2-D 数组
+print(arr9[0:2, 1:4])
+"""
+"""
+打印数组数据类型
+arr10 = np.array([1, 2, 3])
+print(arr10.dtype)
+arr11 = np.array(['A', 'B', 'C'])
+print(arr11.dtype)
+"""
+"""
+转换整个数组数据类型
+arr12 = np.array([1.1, 1.2, 1.3])
+newaar = arr12.astype('i')
+print(newaar)
+print(newaar.dtype)
+"""
+"""
+数组副本
+arr13 = np.array([1, 2, 3, 4, 5])
+x = arr13.copy()
+arr13[0] = 61
+print(arr13)
+print(x)
+数组视图
+arr14 = np.array([1, 2, 3, 4, 5])
+y = arr14.view()
+y[0] = 31
+print(arr14)
+print(y)
+"""
+"""
+如果该数组拥有数据，则这个 base 属性返回 None。
+否则，base 属性将引用原始对象。
+arr15 = np.array([1, 2, 3])
+A = arr15.copy()
+B = arr15.view()
+print(A.base)
+print(B.base)
+"""
+import numpy as np
+"""
+一维数组形状
+arr1 = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
+print(arr1.shape)
+多维数组形状
+arr2 = np.array([1, 2, 3, 4], ndmin=5)
+print(arr2)
+print(arr2.shape)
+"""
+"""
+arr3 = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+newarr1 = arr3.reshape(4,3)
+print(newarr1)
+newarr2 = arr3.reshape(2, 3, 2)
+print(newarr2)
+print(newarr2.base)
+返回的是一个视图
+自动计算-1该为的值
+newarr = arr3.reshape(2, 3, -1)
+print(newarr)
+展平数组
+arr4 = np.array([[1, 2, 3], [4, 5, 6]])
+newarr = arr4.reshape(-1)
+print(newarr)
+"""
+"""
+迭代数组中的元素
+arr5 = np.array([1, 2, 3])
+for x in arr5:
+  print(x)
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+for y in arr:
+  print(y)
+"""
+"""
+迭代标量元素
+arr6 = np.array([[1, 2, 3], [4, 5, 6]])
+for x in arr6:
+  for y in x:
+    print(y)
+    """
+"""
+arr7 = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
+for x in np.nditer(arr7):
+  print(x)
+arr8 = np.array([1, 2, 3])
+for x in np.nditer(arr8, flags=['buffered'], op_dtypes=['S']):
+      print(x)
+"""
+import numpy as np
+"""连接两个数组
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([4, 5, 6])
+newarr = np.concatenate((arr2, arr1))
+print(newarr)
+沿着行 (axis=1) 连接两个 2-D 数组：
+arr1 = np.array([[1, 2], [3, 4]])
+arr2 = np.array([[5, 6], [7, 8]])
+newarr = np.concatenate((arr1, arr2), axis=1)
+print(newarr)
+     hstack进行沿行堆叠
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([4, 5, 6])
+arr = np.hstack((arr1, arr2))
+print(arr)
+  vstack沿列堆叠
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([4, 5, 6])
+arr = np.vstack((arr1, arr2))
+print(arr)
+沿高度堆叠:按行堆叠再转置
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([4, 5, 6])
+arr = np.dstack((arr1, arr2))
+print(arr)
+
+arr = np.array([1, 2, 3, 4, 5, 6])
+newarr = np.array_split(arr, 5)
+print(newarr)
+
+arr = np.array([1, 2, 3, 4, 5, 6])
+
+newarr = np.array_split(arr, 3)
+
+print(newarr[0])
+print(newarr[1])
+print(newarr[2])
+print(newarr)
+newarr中的元素是数组
+arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [13, 14, 15], [16, 17, 18]])
+拆分为三个二维数组
+newarr = np.array_split(arr, 3)
+print(newarr)
+arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [13, 14, 15], [16, 17, 18]])
+沿行分解
+newarr = np.array_split(arr, 3, axis=1)
+
+print(newarr)
+arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [13, 14, 15], [16, 17, 18]])
+沿列拆分
+newarr = np.hsplit(arr, 3)
+
+print(newarr)"""
+import numpy as np
+"""
+arr = np.array([1, 2, 3, 4, 5, 6, 7, 7, 8])
+
+x = np.where(arr == 7)
+
+print(x)
+
+x = np.where(arr % 2 == 0)
+
+print(x)
+
+x = np.where(arr % 2 == 1)
+
+print(x)
+
+y = np.searchsorted(arr, 6)左边搜索该在哪个索引下插入6以保持顺序
+
+print(y)
+
+z = np.searchsorted(arr, 5, side='right')右边开始查找
+
+print(z)
+插入多个值
+arr = np.array([1, 3, 5, 7])
+
+x = np.searchsorted(arr, [2, 4, 6])
+
+print(x)
+
+arr = np.array([3, 2, 5, 6, 3, 4, 1, 0])
+
+newarr = np.sort(arr)
+
+print(arr)
+
+print(newarr)
+
+arr2 = np.array(['banana', 'cherry', 'apple'])
+
+print(np.sort(arr2))
+arr = np.array([True, False, True])
+
+print(np.sort(arr))
+arr = np.array([[3, 2, 4], [5, 0, 1]])
+
+print(np.sort(arr))"""
+import numpy as np
+"""从现有数组中取出一些元素并从中创建新数组称为过滤（filtering）。
+
+在 NumPy 中，我们使用布尔索引列表来过滤数组。
+
+布尔索引列表是与数组中的索引相对应的布尔值列表。
+
+如果索引处的值为 True，则该元素包含在过滤后的数组中；如果索引处的值为 False，则该元素将从过滤后的数组中排除
+
+
+arr = np.array([61, 62, 63, 64, 65])
+
+x = [True, False, True, False, True]
+
+newarr = arr[x]
+
+print(newarr)
+
+arr = np.array([61, 62, 63, 64, 65])
+
+# 创建一个空列表
+filter_arr = []
+
+# 遍历 arr 中的每个元素
+for element in arr:
+  # 如果元素大于 62，则将值设置为 True，否则为 False：
+  if element > 62:
+    filter_arr.append(True)
+  else:
+    filter_arr.append(False)
+
+newarr = arr[filter_arr]
+
+print(filter_arr)
+print(newarr)
+arr = np.array([1, 2, 3, 4, 5, 6, 7])
+
+# 创建一个空列表
+filter_arr = []
+
+# 遍历 arr 中的每个元素
+for element in arr:
+  # 如果元素可以被 2 整除，则将值设置为 True，否则设置为 False
+  if element % 2 == 0:
+    filter_arr.append(True)
+  else:
+    filter_arr.append(False)
+
+newarr = arr[filter_arr]
+
+print(filter_arr)
+print(newarr)
+arr = np.array([61, 62, 63, 64, 65])
+创建一个仅返回大于 62 的值的过滤器数组
+filter_arr = arr > 62
+
+newarr = arr[filter_arr]
+
+print(filter_arr)
+print(newarr)
+arr = np.array([1, 2, 3, 4, 5, 6, 7])
+创建一个过滤器数组，该数组仅返回原始数组中的偶数元素：
+filter_arr = arr % 2 == 0
+
+newarr = arr[filter_arr]
+
+print(filter_arr)
+print(newarr)"""
+#随机数
+import numpy as np
+from numpy import random
+"""
+x = random.randint(100)
+print(x)
+#随机生成一个0-1的浮点数
+y = random.rand(1)
+print(y)
+z = random.randint(100, size=6)
+print(z)
+x = np.sort(z)
+print(x)
+x = random.randint(100, size=(3, 5))
+#生成一个三行五列的随机数组
+print(x)
+x = random.choice([3, 5, 7, 9])
+#choice() 方法使您可以基于值数组生成随机值。
+#choice() 方法将数组作为参数，并随机返回其中一个值
+print(x)
+x = random.choice([3, 5, 7, 9], size=(2, 5))
+#3579生成二维数组
+print(x)
+""""""
+ufunc 用于在 NumPy 中实现矢量化，这比迭代元素要快得多。
+
+它们还提供广播和其他方法，例如减少、累加等，它们对计算非常有帮助。
+
+ufuncs 还接受其他参数，比如：
+
+where 布尔值数组或条件，用于定义应在何处进行操作。
+
+dtype 定义元素的返回类型。
+
+out 返回值应被复制到的输出数组。
+
+x = [1, 2, 3, 4]
+y = [4, 5, 6, 7]
+z = np.add(x, y)
+
+print(z)
+"""
